@@ -1,9 +1,7 @@
 # -*- coding: utf8 -*-
-from ThorlabsPM100 import ThorlabsPM100
+import sys
 
-from usbtmc import USBTMC
-
-__version__ = '1.0'
+__version__ = '1.1'
 
 __long_description__=u"""\
 Overview
@@ -55,7 +53,17 @@ Contact
 
 Please send bug reports or feedback to `Pierre Cladé`_.
 
+Vesrion History
+===============
+
+* 1.1 : support of Python 3 with 2to3
+* 1.0 : initial release
+
 
 .. _Pierre Cladé: mailto:pierre.clade@spectro.jussieu.fr
 """
+
+if not "setuptools" in sys.modules.keys():
+    from ThorlabsPM100 import ThorlabsPM100
+    from usbtmc import USBTMC
 

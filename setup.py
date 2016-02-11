@@ -31,6 +31,7 @@ author.''',
       long_description = long_description,  
       keywords=['Thorlabs','PM100', 'PM100A', 'PM100D'],
       url = doc_url,
+      use_2to3=True,
       classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Education',

@@ -8,7 +8,7 @@ class USBTMC(object):
         self.FILE = os.open(device, os.O_RDWR)
  
     def write(self, command):
-        os.write(self.FILE, command);
+        os.write(self.FILE, command.encode('ascii'));
  
     def read(self, length=None):
         if length is None:
@@ -17,7 +17,7 @@ class USBTMC(object):
 
     def ask(self, command, length=None):
         self.write(command)
-        return self.read(length=length)
+        return self.read(length=length).decode('ascii')
 
     def ask_for_value(self, command):
         return eval(self.ask(command).strip())

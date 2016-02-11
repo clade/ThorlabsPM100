@@ -213,7 +213,8 @@ class GenericCommandClass(object):
             if not isinstance(cls.__dict__[elm], Argument):
                 continue
             out.append(cls.__dict__[elm])
-        out = sorted(out, cmp=lambda x,y:cmp(x.ordre, y.ordre))
+#        out = sorted(out, cmp=lambda x,y:cmp(x.ordre, y.ordre))
+        out = sorted(out, key=lambda x:x.ordre)
         return out
     @classmethod
     def get_argument_list_name(cls):
@@ -224,7 +225,8 @@ class GenericCommandClass(object):
             if not isinstance(cls.__dict__[elm], Argument):
                 continue
             out.append((elm, cls.__dict__[elm]))
-        out = sorted(out, cmp=lambda x,y:cmp(x[1].ordre, y[1].ordre))
+#        out = sorted(out, cmp=lambda x,y:cmp(x[1].ordre, y[1].ordre))
+        out = sorted(out, key = lambda x:x[1].ordre)
         return [elm.split('__')[-1] for (elm, _) in out]
     @classmethod
     def out_conversion(cls, value_str):
@@ -252,6 +254,7 @@ class GenericCommandClass(object):
     @classmethod
     def to_dict(cls,name):
         return {name:_generic_command(cls.cmd, doc=cls._get_the_doc())}
+    full_acces = ""
     @classmethod
     def _get_the_doc(cls):
         title = cls.full_acces+'()'
@@ -491,6 +494,7 @@ if __name__ == "__main__":
 
     class ChannelGroup(IndexedGroup):
         __metaclass__ = InstrumentMetaclass
+        machin = ChannelMachinGroup
         var = '<X>'
         class testa(GenericGetSetCommandClass):
             """ coucou """
@@ -510,6 +514,7 @@ if __name__ == "__main__":
             cmd = 'COUCOU:VAL'
             value = Argument(0, ["PIErre", "MATHilde", numbers.Number], default='Pierre')
             autre_valeur = Argument(1, [numbers.Number], default=3.14)
+        channel = ChannelGroup
 
     scope = Test()
     print scope.coucou_val
