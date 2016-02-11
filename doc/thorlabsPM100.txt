@@ -1,0 +1,1304 @@
+Main commands
+=============
+
+.. py:attribute:: ThorlabsPM100.read
+
+   Read-only property
+   
+   Start new measurement and read data (SCPI Vol.2 §3.3)
+   
+   **Initial SCPI command :** READ
+
+
+
+.. py:method:: ThorlabsPM100.abort()
+
+   Abort measurement
+
+
+
+.. py:attribute:: ThorlabsPM100.getconfigure
+
+   Read-only property
+   
+   Query the current measurement configuration.
+   
+   **Initial SCPI command :** CONFigure
+
+
+
+.. py:attribute:: ThorlabsPM100.fetch
+
+   Read-only property
+   
+   Read last measurement data (SCPI Vol.2 §3.2)
+   
+   **Initial SCPI command :** FETCh
+
+
+
+Group status
+============
+
+.. py:attribute:: ThorlabsPM100.status.questionable.enable
+
+   Write or read property
+   
+   Program the enable register
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Questionable:ENABle
+
+
+
+.. py:attribute:: ThorlabsPM100.status.questionable.ntransition
+
+   Write or read property
+   
+   Program the negative transition filter
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Questionable:NTRansition
+
+
+
+.. py:method:: ThorlabsPM100.status.questionable.preset()
+
+   Return status registers to default states.
+
+
+
+.. py:attribute:: ThorlabsPM100.status.questionable.ptransition
+
+   Write or read property
+   
+   Program the positive transition filter
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Questionable:PTRansition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.questionable.event
+
+   Read-only property
+   
+   Read the event register
+   
+   **Initial SCPI command :** Status:Questionable:EVENt
+
+
+
+.. py:attribute:: ThorlabsPM100.status.questionable.condition
+
+   Read-only property
+   
+   Read the condition register
+   
+   **Initial SCPI command :** Status:Questionable:CONDition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.auxillary.ntransition
+
+   Write or read property
+   
+   Program the negative transition filter
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Auxillary:NTRansition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.auxillary.ptransition
+
+   Write or read property
+   
+   Program the positive transition filter
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Auxillary:PTRansition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.auxillary.enable
+
+   Write or read property
+   
+   Program the enable register
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Auxillary:ENABle
+
+
+
+.. py:attribute:: ThorlabsPM100.status.auxillary.event
+
+   Read-only property
+   
+   Read the event register
+   
+   **Initial SCPI command :** Status:Auxillary:EVENt
+
+
+
+.. py:attribute:: ThorlabsPM100.status.auxillary.condition
+
+   Read-only property
+   
+   Read the condition register
+   
+   **Initial SCPI command :** Status:Auxillary:CONDition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.operation.ntransition
+
+   Write or read property
+   
+   Program the negative transition filter
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Operation:NTRansition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.operation.ptransition
+
+   Write or read property
+   
+   Program the positive transition filter
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Operation:PTRansition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.operation.enable
+
+   Write or read property
+   
+   Program the enable register
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Operation:ENABle
+
+
+
+.. py:attribute:: ThorlabsPM100.status.operation.event
+
+   Read-only property
+   
+   Read the event register
+   
+   **Initial SCPI command :** Status:Operation:EVENt
+
+
+
+.. py:attribute:: ThorlabsPM100.status.operation.condition
+
+   Read-only property
+   
+   Read the condition register
+   
+   **Initial SCPI command :** Status:Operation:CONDition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.measurement.ntransition
+
+   Write or read property
+   
+   Program the negative transition filter
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Measurement:NTRansition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.measurement.ptransition
+
+   Write or read property
+   
+   Program the positive transition filter
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Measurement:PTRansition
+
+
+
+.. py:attribute:: ThorlabsPM100.status.measurement.enable
+
+   Write or read property
+   
+   Program the enable register
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Status:Measurement:ENABle
+
+
+
+.. py:attribute:: ThorlabsPM100.status.measurement.event
+
+   Read-only property
+   
+   Read the event register
+   
+   **Initial SCPI command :** Status:Measurement:EVENt
+
+
+
+.. py:attribute:: ThorlabsPM100.status.measurement.condition
+
+   Read-only property
+   
+   Read the condition register
+   
+   **Initial SCPI command :** Status:Measurement:CONDition
+
+
+
+Group configure
+===============
+
+.. py:method:: ThorlabsPM100.configure.scalar.current.dc()
+
+   Configure for current measurement
+
+
+
+.. py:method:: ThorlabsPM100.configure.scalar.voltage.dc()
+
+   Configure for voltage measurement
+
+
+
+.. py:method:: ThorlabsPM100.configure.scalar.temperature()
+
+   Configure for sensor temperature measurement
+
+
+
+.. py:method:: ThorlabsPM100.configure.scalar.power()
+
+   Configure for power measurement
+
+
+
+.. py:method:: ThorlabsPM100.configure.scalar.energy()
+
+   Configure for energy measurement // PM100D only
+
+
+
+.. py:method:: ThorlabsPM100.configure.scalar.resistance()
+
+   Configure for sensor presence resistance measurement
+
+
+
+.. py:method:: ThorlabsPM100.configure.scalar.frequency()
+
+   Configure for frequency measurement // PM100D only
+
+
+
+.. py:method:: ThorlabsPM100.configure.scalar.pdensity()
+
+   Configure for power density measurement
+
+
+
+.. py:method:: ThorlabsPM100.configure.scalar.edensity()
+
+   Configure for energy density measurement // PM100D only
+
+
+
+Group calibration
+=================
+
+.. py:attribute:: ThorlabsPM100.calibration.string
+
+   Read-only property
+   
+   Returns a human readable calibration string. This is a query only command. The response is formatted as string response data.
+   
+   **Initial SCPI command :** Calibration:STRing
+
+
+
+Group measure
+=============
+
+.. py:method:: ThorlabsPM100.measure.scalar.current.dc()
+
+   Performs a current measurement
+
+
+
+.. py:method:: ThorlabsPM100.measure.scalar.voltage.dc()
+
+   Performs a voltage measurement
+
+
+
+.. py:method:: ThorlabsPM100.measure.scalar.temperature()
+
+   Performs a sensor temperature measurement
+
+
+
+.. py:method:: ThorlabsPM100.measure.scalar.power()
+
+   Performs a power measurement
+
+
+
+.. py:method:: ThorlabsPM100.measure.scalar.energy()
+
+   Performs a energy measurement // PM100D only
+
+
+
+.. py:method:: ThorlabsPM100.measure.scalar.resistance()
+
+   Performs a sensor presence resistance measurement
+
+
+
+.. py:method:: ThorlabsPM100.measure.scalar.frequency()
+
+   Performs a frequency measurement // PM100D only
+
+
+
+.. py:method:: ThorlabsPM100.measure.scalar.pdensity()
+
+   Performs a power density measurement
+
+
+
+.. py:method:: ThorlabsPM100.measure.scalar.edensity()
+
+   Performs a energy density measurement // PM100D only
+
+
+
+Group system
+============
+
+.. py:attribute:: ThorlabsPM100.system.beeper.state
+
+   Write or read property
+   
+   Activate/deactivate the beeper. (SCPI Vol.2 §21.2.3)
+   
+   **Property value :** ON,1,OFF,0
+   
+   **Initial SCPI command :** System:Beeper:STATe
+
+
+
+.. py:method:: ThorlabsPM100.system.beeper.immediate()
+
+   Issue an audible signal. (SCPI Vol.2 §21.2.2)
+
+
+
+.. py:attribute:: ThorlabsPM100.system.sensor.idn
+
+   Read-only property
+   
+   Query information about the connected sensor. This is a query only command. The response consists of the following fields:
+   
+   **Initial SCPI command :** System:Sensor:IDN
+
+
+
+.. py:attribute:: ThorlabsPM100.system.error.next
+
+   Read-only property
+   
+   Returns the latest <error code, “message”>. (SCPI Vol.2 §21.8.8)
+   
+   **Initial SCPI command :** System:Error:NEXT
+
+
+
+.. py:attribute:: ThorlabsPM100.system.date
+
+   Write or read property
+   
+   Sets the instrument‟s calendar. (SCPI Vol.2 §21.7) // PM100D only
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** System:DATE
+
+
+
+.. py:attribute:: ThorlabsPM100.system.version
+
+   Read-only property
+   
+   Query level of SCPI standard (1999.0) . (SCPI Vol.2 §21.21)
+   
+   **Initial SCPI command :** System:VERSion
+
+
+
+.. py:attribute:: ThorlabsPM100.system.lfrequency
+
+   Write or read property
+   
+   Sets the instrument‟s line frequency setting to 50 or 60Hz. (SCPI Vol.2 §21.13)
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** System:LFRequency
+
+
+
+.. py:attribute:: ThorlabsPM100.system.time
+
+   Write or read property
+   
+   Sets the instrument‟s clock. (SCPI Vol.2 §21.19) // PM100D only
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** System:TIME
+
+
+
+Group initiate
+==============
+
+.. py:method:: ThorlabsPM100.initiate.immediate()
+
+   Start measurement
+
+
+
+Group sense
+===========
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.range.upper
+
+   Write or read property
+   
+   Sets the current range in W
+   
+   **Property value :** MINmum,MAXimum,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Power:Dc:Range:UPPer
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.range.maximum_upper
+
+   Read-only property
+   
+   Queries the maximum current range
+   
+   **Initial SCPI command :** Sense:Power:Dc:Range:UPPer MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.range.minimum_upper
+
+   Read-only property
+   
+   Queries the minimum current range
+   
+   **Initial SCPI command :** Sense:Power:Dc:Range:UPPer MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.range.auto
+
+   Write or read property
+   
+   Switches the auto-ranging function on and off
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Sense:Power:Dc:Range:AUTO
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.reference.state
+
+   Write or read property
+   
+   Switches to delta mode
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Sense:Power:Dc:Reference:STATe
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.reference.value
+
+   Write or read property
+   
+   Sets a delta reference value in W
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Power:Dc:Reference:value
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.default_reference
+
+   Read-only property
+   
+   Queries the default delta reference value
+   
+   **Initial SCPI command :** Sense:Power:Dc:REFerence DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.maximum_reference
+
+   Read-only property
+   
+   Queries the maximum delta reference value
+   
+   **Initial SCPI command :** Sense:Power:Dc:REFerence MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.minimum_reference
+
+   Read-only property
+   
+   Queries the minimum delta reference value
+   
+   **Initial SCPI command :** Sense:Power:Dc:REFerence MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.power.dc.unit
+
+   Write or read property
+   
+   Sets the power unit W or dBm
+   
+   **Property value :** W,DBM
+   
+   **Initial SCPI command :** Sense:Power:Dc:UNIT
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.average.count
+
+   Write or read property
+   
+   Sets the averaging rate (1 sample takes approx. 3ms)
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Average:COUNt
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.range.upper
+
+   Write or read property
+   
+   Sets the current range in A
+   
+   **Property value :** MINmum,MAXimum,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Current:Dc:Range:UPPer
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.range.maximum_upper
+
+   Read-only property
+   
+   Queries the maximum current range
+   
+   **Initial SCPI command :** Sense:Current:Dc:Range:UPPer MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.range.minimum_upper
+
+   Read-only property
+   
+   Queries the minimum current range
+   
+   **Initial SCPI command :** Sense:Current:Dc:Range:UPPer MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.range.auto
+
+   Write or read property
+   
+   Switches the auto-ranging function on and off
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Sense:Current:Dc:Range:AUTO
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.reference.state
+
+   Write or read property
+   
+   Switches to delta mode
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Sense:Current:Dc:Reference:STATe
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.reference.value
+
+   Write or read property
+   
+   Sets a delta reference value in A
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Current:Dc:Reference:value
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.default_reference
+
+   Read-only property
+   
+   Queries the default delta reference value
+   
+   **Initial SCPI command :** Sense:Current:Dc:REFerence DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.maximum_reference
+
+   Read-only property
+   
+   Queries the maximum delta reference value
+   
+   **Initial SCPI command :** Sense:Current:Dc:REFerence MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.current.dc.minimum_reference
+
+   Read-only property
+   
+   Queries the minimum delta reference value
+   
+   **Initial SCPI command :** Sense:Current:Dc:REFerence MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.frequency.range.upper
+
+   Read-only property
+   
+   Queries the frequency range // PM100D only
+   
+   **Initial SCPI command :** Sense:Frequency:Range:UPPer
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.frequency.range.lower
+
+   Read-only property
+   
+   Queries the frequency range // PM100D only
+   
+   **Initial SCPI command :** Sense:Frequency:Range:LOWer
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.range.upper
+
+   Write or read property
+   
+   Sets the current range in V
+   
+   **Property value :** MINmum,MAXimum,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:Range:UPPer
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.range.maximum_upper
+
+   Read-only property
+   
+   Queries the maximum current range
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:Range:UPPer MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.range.minimum_upper
+
+   Read-only property
+   
+   Queries the minimum current range
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:Range:UPPer MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.range.auto
+
+   Write or read property
+   
+   Switches the auto-ranging function on and off
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:Range:AUTO
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.default_reference
+
+   Read-only property
+   
+   Queries the delta default reference value
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:REFerence DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.maximum_reference
+
+   Read-only property
+   
+   Queries the delta maximum reference value
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:REFerence MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.state
+
+   Write or read property
+   
+   Switches to delta mode
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:STATe
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.minimum_reference
+
+   Read-only property
+   
+   Queries the delta minimum reference value
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:REFerence MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.voltage.dc.reference
+
+   Write or read property
+   
+   Sets a delta reference value in V
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Voltage:Dc:REFerence
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.energy.range.upper
+
+   Write or read property
+   
+   Sets the energy range in J
+   
+   **Property value :** MINmum,MAXimum,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Energy:Range:UPPer
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.energy.range.maximum_upper
+
+   Read-only property
+   
+   Queries the maximum energy range
+   
+   **Initial SCPI command :** Sense:Energy:Range:UPPer MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.energy.range.minimum_upper
+
+   Read-only property
+   
+   Queries the minimum energy range
+   
+   **Initial SCPI command :** Sense:Energy:Range:UPPer MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.energy.reference.state
+
+   Write or read property
+   
+   Switches to delta mode
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Sense:Energy:Reference:STATe
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.energy.reference.value
+
+   Write or read property
+   
+   Sets a delta reference value in J
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Energy:Reference:value
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.energy.default_reference
+
+   Read-only property
+   
+   Queries the default delta reference value
+   
+   **Initial SCPI command :** Sense:Energy:REFerence DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.energy.maximum_reference
+
+   Read-only property
+   
+   Queries the maximum delta reference value
+   
+   **Initial SCPI command :** Sense:Energy:REFerence MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.energy.minimum_reference
+
+   Read-only property
+   
+   Queries the minimum delta reference value
+   
+   **Initial SCPI command :** Sense:Energy:REFerence MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.loss.input.default_magnitude
+
+   Read-only property
+   
+   Queries the user default attenuation factor
+   
+   **Initial SCPI command :** Sense:Correction:Loss:Input:MAGNitude DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.loss.input.minimum_magnitude
+
+   Read-only property
+   
+   Queries the user minimum attenuation factor
+   
+   **Initial SCPI command :** Sense:Correction:Loss:Input:MAGNitude MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.loss.input.magnitude
+
+   Write or read property
+   
+   Sets a user attenuation factor in dB
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Correction:Loss:Input:MAGNitude
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.loss.input.maximum_magnitude
+
+   Read-only property
+   
+   Queries the user maximum attenuation factor
+   
+   **Initial SCPI command :** Sense:Correction:Loss:Input:MAGNitude MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.energy.pyro.maximum_response
+
+   Read-only property
+   
+   Queries the pyro-detectro maximum response value
+   
+   **Initial SCPI command :** Sense:Correction:Energy:Pyro:RESPonse MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.energy.pyro.default_response
+
+   Read-only property
+   
+   Queries the pyro-detectro default response value
+   
+   **Initial SCPI command :** Sense:Correction:Energy:Pyro:RESPonse DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.energy.pyro.response
+
+   Write or read property
+   
+   Sets the pyro-detector response value in V/J
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Correction:Energy:Pyro:RESPonse
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.energy.pyro.minimum_response
+
+   Read-only property
+   
+   Queries the pyro-detectro minimum response value
+   
+   **Initial SCPI command :** Sense:Correction:Energy:Pyro:RESPonse MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.power.pdiode.maximum_response
+
+   Read-only property
+   
+   Queries the photodiode maximum response value
+   
+   **Initial SCPI command :** Sense:Correction:Power:Pdiode:RESPonse MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.power.pdiode.default_response
+
+   Read-only property
+   
+   Queries the photodiode default response value
+   
+   **Initial SCPI command :** Sense:Correction:Power:Pdiode:RESPonse DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.power.pdiode.response
+
+   Write or read property
+   
+   Sets the photodiode response value in A/W
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Correction:Power:Pdiode:RESPonse
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.power.pdiode.minimum_response
+
+   Read-only property
+   
+   Queries the photodiode minimum response value
+   
+   **Initial SCPI command :** Sense:Correction:Power:Pdiode:RESPonse MINimum
+
+
+
+.. py:method:: ThorlabsPM100.sense.correction.collect.zero.initiate()
+
+   Performs zero adjustment routine
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.collect.zero.state
+
+   Read-only property
+   
+   Queries the zero adjustment routine state
+   
+   **Initial SCPI command :** Sense:Correction:Collect:Zero:STATe
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.collect.zero.magnitude
+
+   Read-only property
+   
+   Queries the zero value
+   
+   **Initial SCPI command :** Sense:Correction:Collect:Zero:MAGNitude
+
+
+
+.. py:method:: ThorlabsPM100.sense.correction.collect.zero.abort()
+
+   Aborts zero adjustment routine
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.maximum_beamdiameter
+
+   Read-only property
+   
+   Sets the maximum beam diameter in mm
+   
+   **Initial SCPI command :** Sense:Correction:BEAMdiameter MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.default_beamdiameter
+
+   Read-only property
+   
+   Sets the default beam diameter in mm
+   
+   **Initial SCPI command :** Sense:Correction:BEAMdiameter DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.beamdiameter
+
+   Write or read property
+   
+   Sets the beam diameter in mm
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Correction:BEAMdiameter
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.maximum_wavelength
+
+   Read-only property
+   
+   Queries the maximum operation wavelength
+   
+   **Initial SCPI command :** Sense:Correction:WAVelength MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.minimum_beamdiameter
+
+   Read-only property
+   
+   Sets the minimum beam diameter in mm
+   
+   **Initial SCPI command :** Sense:Correction:BEAMdiameter MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.minimum_wavelength
+
+   Read-only property
+   
+   Queries the minimum operation wavelength
+   
+   **Initial SCPI command :** Sense:Correction:WAVelength MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.correction.wavelength
+
+   Write or read property
+   
+   Sets the operation wavelength in nm
+   
+   **Property value :** MINimum,MAXimum,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Sense:Correction:WAVelength
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.peakdetector.threshold
+
+   Write or read property
+   
+   MAXimum|DEFault|<numeric_value>} Sets the trigger level in % for the energy mode
+   
+   **Property value :** MINimum,
+   
+   **Initial SCPI command :** Sense:Peakdetector:THReshold
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.peakdetector.default_threshold
+
+   Read-only property
+   
+   Queries the default trigger level setting
+   
+   **Initial SCPI command :** Sense:Peakdetector:THReshold DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.peakdetector.maximum_threshold
+
+   Read-only property
+   
+   Queries the maximum trigger level setting
+   
+   **Initial SCPI command :** Sense:Peakdetector:THReshold MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.sense.peakdetector.minimum_threshold
+
+   Read-only property
+   
+   Queries the minimum trigger level setting
+   
+   **Initial SCPI command :** Sense:Peakdetector:THReshold MINimum
+
+
+
+Group input
+===========
+
+.. py:attribute:: ThorlabsPM100.input.adapter.type
+
+   Write-only property
+   
+   Sets default sensor adapter type
+   
+   **Property value (write-only) :** PHOTodiode,THERmal,PYRo
+   
+   **Initial SCPI command :** Input:Adapter:TYPE
+
+
+
+.. py:attribute:: ThorlabsPM100.input.thermopile.accelerator.tau
+
+   Write or read property
+   
+   Sets thermopile time constant tau(0-63%) in s
+   
+   **Property value :** MINimum,MAXimum,DEFault,<class 'numbers.Number'>
+   
+   **Initial SCPI command :** Input:Thermopile:Accelerator:TAU
+
+
+
+.. py:attribute:: ThorlabsPM100.input.thermopile.accelerator.maximum_tau
+
+   Read-only property
+   
+   Queries the maximum thermopile time constant tau(0-63%) in s
+   
+   **Initial SCPI command :** Input:Thermopile:Accelerator:TAU MAXimum
+
+
+
+.. py:attribute:: ThorlabsPM100.input.thermopile.accelerator.default_tau
+
+   Read-only property
+   
+   Queries the default thermopile time constant tau(0-63%) in s
+   
+   **Initial SCPI command :** Input:Thermopile:Accelerator:TAU DEFault
+
+
+
+.. py:attribute:: ThorlabsPM100.input.thermopile.accelerator.minimum_tau
+
+   Read-only property
+   
+   Queries the minimum thermopile time constant tau(0-63%) in s
+   
+   **Initial SCPI command :** Input:Thermopile:Accelerator:TAU MINimum
+
+
+
+.. py:attribute:: ThorlabsPM100.input.thermopile.accelerator.state
+
+   Write or read property
+   
+   Sets the thermopile accelerator state
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Input:Thermopile:Accelerator:STATe
+
+
+
+.. py:attribute:: ThorlabsPM100.input.pdiode.filter.lpass.state
+
+   Write or read property
+   
+   Sets the bandwidth of the photodiode input stage
+   
+   **Property value :** OFF,0,ON,1
+   
+   **Initial SCPI command :** Input:Pdiode:Filter:Lpass:STATe
+
+
+
+Group display
+=============
+
+.. py:attribute:: ThorlabsPM100.display.contrast
+
+   Write or read property
+   
+   Set the display contrast. (SCPI Vol.2 §8.4) // PM100D only
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Display:CONTrast
+
+
+
+.. py:attribute:: ThorlabsPM100.display.brightness
+
+   Write or read property
+   
+   Set the display birghtness. (SCPI Vol.2 §8.2)
+   
+   **Property value :** <class 'numbers.Number'>
+   
+   **Initial SCPI command :** Display:BRIGhtness
+
+
+
