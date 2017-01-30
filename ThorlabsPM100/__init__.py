@@ -24,7 +24,7 @@ using ThorlabsPM100 are run, etc.)
 Usage
 =====
 
-The best way to connect your instrument is with the pyvisa package. On windows the pyvisa a package is supported by the `python(x,y) <http://code.google.com/p/pythonxy/>`_ distribution.
+The best way to connect your instrument is with the pyvisa package `<https://pyvisa.readthedocs.io/en/stable/>`_.
 On linux, the instrument is automatically detected as a USBTMC device. A simple interface is described in the file usbtmc.py
 
 First you need to create your instrument. Using visa::
