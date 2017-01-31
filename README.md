@@ -21,7 +21,8 @@ First you need to create your instrument. Using visa:
 
     import visa
     from ThorlabsPM100 import ThorlabsPM100
-    inst = visa.instrument('USB0::0x0000::0x0000::xxxxxxxxx::INSTR', term_chars='\n', timeout=1)
+    rm = visa.ResourceManager()
+    inst = rm.open_resource('USB0::0x0000::0x0000::xxxxxxxxx::INSTR', term_chars='\\n', timeout=1)
     power_meter = ThorlabsPM100(inst=inst)
 
 Or using usbtmc (you nedd to have read and write access to the ‘/dev/usbtmc0’):
