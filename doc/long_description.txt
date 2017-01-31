@@ -43,6 +43,11 @@ Commands that set or query a value are Python properties of ThorlabsPM100 class.
     power_meter.sense.average.count = 10 # write property
     power_meter.system.beeper.immediate() # method
 
+Example
+=======
+
+More functionnalities are describes on :doc:`this example </example>`. A :doc:`complete description of the API </thorlabsPM100>` is also provided. 
+
 Contact
 =======
 
