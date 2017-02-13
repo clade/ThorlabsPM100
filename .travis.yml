@@ -1,0 +1,23 @@
+# Config file for automatic testing at travis-ci.org
+language: python
+sudo: false # use the new faster dockerized containers on Travis CI
+
+matrix:
+    include:
+    - python: "2.7"
+      env: DEPS="pyvisa==1.8 nose"
+    - python: "3.5"
+      env: DEPS="pyvisa==1.8 nose"
+
+
+before_install:
+    - pip install setuptools --upgrade
+    - pip install pip --upgrade
+    - pip install $DEPS
+
+script:
+    - python setup.py egg_info
+    - python setup.py nosetests -sv
+    # Generate documentation
+    #- cd doc
+#- make html
