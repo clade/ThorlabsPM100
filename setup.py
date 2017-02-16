@@ -11,14 +11,9 @@ long_description += """
 Documentation
 =============
 
-<<<<<<< HEAD
 **Detailed information** about the Thorlabs PM100 driver can be found on the `main web site <http://pythonhosted.org/ThorlabsPM100>`_
 
 **Source code** available on `github <http://https://github.com/clade/ThorlabsPM100>`_
-=======
-**Detailed information** about the Thorlabs PM100 driver can be found on the
-`main web site <http://pythonhosted.org/ThorlabsPM100>`_
->>>>>>> 29447d87825bde4d6d91fc0a7d0ebdbcd0d6f8f7
 """
 
 setup(name="ThorlabsPM100",
