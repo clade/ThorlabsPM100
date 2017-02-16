@@ -27,8 +27,8 @@ using ThorlabsPM100 are run, etc.)
 Usage
 =====
 
-The best way to connect your instrument is with the pyvisa package `<https://pyvisa.readthedocs.io/en/stable/>`_.
-On linux, the instrument is automatically detected as a USBTMC device. A simple interface is described in the file usbtmc.py
+The best way to connect your instrument is with the PyVISA package `<https://pyvisa.readthedocs.io/en/stable/>`_.
+On Linux, the instrument is automatically detected as a USBTMC device. A simple interface is described in the file usbtmc.py
 
 First you need to create your instrument. Using visa::
 
@@ -55,14 +55,14 @@ Commands that set or query a value are Python properties of ThorlabsPM100 class.
 Example
 =======
 
-More functionnalities are describes on :doc:`this example </example>`. A :doc:`complete description of the API </thorlabsPM100>` is also provided. 
+More functionalities are describes in :doc:`this example </example>`. A :doc:`complete description of the API </thorlabsPM100>` is also provided. 
 
 Contact
 =======
 
 Please send bug reports or feedback to `Pierre Cladé`_.
 
-Vesrion History
+Version History
 ===============
 
 * 1.1 : support of Python 3 with 2to3
@@ -79,6 +79,3 @@ Contents:
 
    example
    thorlabsPM100
-
-
-
