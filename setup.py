@@ -7,7 +7,7 @@ doc_url = "http://pythonhosted.org/ThorlabsPM100"
 
 long_description = __long_description__
 
-long_description += """
+long_description += r"""
 Documentation
 =============
 
