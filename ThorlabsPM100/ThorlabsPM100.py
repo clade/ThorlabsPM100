@@ -920,10 +920,10 @@ class SenseCorrection(Group):
 class SensePeakdetector(Group):
     __metaclass__ = InstrumentMetaclass
     class threshold(GenericGetSetCommandClass):
-        """MAXimum|DEFault|<numeric_value>} Sets the trigger level in % for the energy mode"""
+        """Sets the trigger level in % for the energy mode"""
         cmd = 'Sense:Peakdetector:THReshold'
         full_acces = 'sense.peakdetector.threshold'
-        value=Argument(0,["MINimum",""])
+        value=Argument(0,["MINimum","MAXimum","DEFault","<numeric_value>nm"])
     
     class default_threshold(GenericGetCommandClass):
         """Queries the default trigger level setting"""
