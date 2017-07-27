@@ -856,7 +856,7 @@ class SensePeakdetector(Group):
         """
         cmd = 'Sense:Peakdetector:THReshold'
         full_acces = 'sense.peakdetector.threshold'
-        value = Argument(0, ["MINimum", ""])
+        value = Argument(0, ["MINimum","MAXimum","DEFault","<numeric_value>nm"])
 
     class default_threshold(GenericGetCommandClass):
         """Queries the default trigger level setting"""
