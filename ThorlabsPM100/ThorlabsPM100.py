@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from VISA_wrapper_metaclass import Group, IndexedGroup, InstrumentMetaclass,
+from VISA_wrapper_metaclass import (Group, IndexedGroup, InstrumentMetaclass,
 Argument, GenericCommandClass, GenericGetCommandClass, GenericSetCommandClass,
-GenericGetSetCommandClass, InstrumentCommand
+GenericGetSetCommandClass, InstrumentCommand)
 
 IndexedGroup.var = '<n>'
 
