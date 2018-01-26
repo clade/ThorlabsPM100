@@ -32,7 +32,7 @@ class TestThorlabsPM100(unittest.TestCase):
     def test_read(self):
         self.assertEqual(self.power_meter.read, 1.23)
 
-    def test_resd_write(self):
+    def test_read_write(self):
         self.power_meter.sense.average.count = 10
         self.assertEqual(self.power_meter.sense.average.count, 10)
 

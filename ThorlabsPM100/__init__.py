@@ -72,5 +72,5 @@ Vesrion History
 """
 
 if "setuptools" not in sys.modules.keys():
-    from ThorlabsPM100 import ThorlabsPM100
-    from usbtmc import USBTMC
+    from .ThorlabsPM100 import ThorlabsPM100
+    from .usbtmc import USBTMC

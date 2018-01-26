@@ -528,8 +528,9 @@ class IndexedGroup(Group):
 
 
 if __name__ == "__main__":
-    class Generic(object):
-        __metaclass__ = InstrumentMetaclass
+    from six import with_metaclass
+    class Generic(with_metaclass(InstrumentMetaclass)):
+#        __metaclass__ = InstrumentMetaclass
 
         def __init__(self):
             print("Initialise dummy instrument")
@@ -567,8 +568,7 @@ if __name__ == "__main__":
             value = Argument(0, [TestValueBoundNumber(-1, 1)])
             freq = Argument(1, [numbers.Number])
 
-    class Test(Generic, InstrumentCommand):
-        __metaclass__ = InstrumentMetaclass
+    class Test(Generic, InstrumentCommand, with_metaclass(InstrumentMetaclass)):
 
         class coucou_val(GenericGetCommandClass):
             """ This is a test method """

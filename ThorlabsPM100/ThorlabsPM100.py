@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from VISA_wrapper_metaclass import (Group, IndexedGroup, InstrumentMetaclass,
+from .VISA_wrapper_metaclass import (Group, IndexedGroup, InstrumentMetaclass,
 Argument, GenericCommandClass, GenericGetCommandClass, GenericSetCommandClass,
 GenericGetSetCommandClass, InstrumentCommand)
 
 IndexedGroup.var = '<n>'
 
+def with_metaclass(meta, *bases):
+    """Create a base class with a metaclass."""
+    return meta("NewBase", bases, {})
 
 class Generic(object):
     def __init__(self, inst, verbose=False):
@@ -26,8 +29,7 @@ class Generic(object):
         return out
 
 
-class StatusQuestionable(Group):
-    __metaclass__ = InstrumentMetaclass
+class StatusQuestionable(Group, with_metaclass(InstrumentMetaclass)):
 
     class enable(GenericGetSetCommandClass):
         """Program the enable register"""
@@ -63,8 +65,7 @@ class StatusQuestionable(Group):
         full_acces = 'status.questionable.condition'
 
 
-class StatusAuxillary(Group):
-    __metaclass__ = InstrumentMetaclass
+class StatusAuxillary(Group, with_metaclass(InstrumentMetaclass)):
 
     class ntransition(GenericGetSetCommandClass):
         """Program the negative transition filter"""
@@ -95,8 +96,7 @@ class StatusAuxillary(Group):
         full_acces = 'status.auxillary.condition'
 
 
-class StatusOperation(Group):
-    __metaclass__ = InstrumentMetaclass
+class StatusOperation(Group, with_metaclass(InstrumentMetaclass)):
 
     class ntransition(GenericGetSetCommandClass):
         """Program the negative transition filter"""
@@ -127,8 +127,7 @@ class StatusOperation(Group):
         full_acces = 'status.operation.condition'
 
 
-class StatusMeasurement(Group):
-    __metaclass__ = InstrumentMetaclass
+class StatusMeasurement(Group, with_metaclass(InstrumentMetaclass)):
 
     class ntransition(GenericGetSetCommandClass):
         """Program the negative transition filter"""
@@ -159,16 +158,14 @@ class StatusMeasurement(Group):
         full_acces = 'status.measurement.condition'
 
 
-class Status(Group):
-    __metaclass__ = InstrumentMetaclass
+class Status(Group, with_metaclass(InstrumentMetaclass)):
     questionable = StatusQuestionable
     auxillary = StatusAuxillary
     operation = StatusOperation
     measurement = StatusMeasurement
 
 
-class ConfigureScalarCurrent(Group):
-    __metaclass__ = InstrumentMetaclass
+class ConfigureScalarCurrent(Group, with_metaclass(InstrumentMetaclass)):
 
     class dc(GenericCommandClass):
         """Configure for current measurement"""
@@ -176,8 +173,7 @@ class ConfigureScalarCurrent(Group):
         full_acces = 'configure.scalar.current.dc'
 
 
-class ConfigureScalarVoltage(Group):
-    __metaclass__ = InstrumentMetaclass
+class ConfigureScalarVoltage(Group, with_metaclass(InstrumentMetaclass)):
 
     class dc(GenericCommandClass):
         """Configure for voltage measurement"""
@@ -185,8 +181,7 @@ class ConfigureScalarVoltage(Group):
         full_acces = 'configure.scalar.voltage.dc'
 
 
-class ConfigureScalar(Group):
-    __metaclass__ = InstrumentMetaclass
+class ConfigureScalar(Group, with_metaclass(InstrumentMetaclass)):
     current = ConfigureScalarCurrent
     voltage = ConfigureScalarVoltage
 
@@ -226,13 +221,11 @@ class ConfigureScalar(Group):
         full_acces = 'configure.scalar.edensity'
 
 
-class Configure(Group):
-    __metaclass__ = InstrumentMetaclass
+class Configure(Group, with_metaclass(InstrumentMetaclass)):
     scalar = ConfigureScalar
 
 
-class Calibration(Group):
-    __metaclass__ = InstrumentMetaclass
+class Calibration(Group, with_metaclass(InstrumentMetaclass)):
 
     class string(GenericGetCommandClass):
         """Returns a human readable calibration string.
@@ -243,8 +236,7 @@ class Calibration(Group):
         full_acces = 'calibration.string'
 
 
-class MeasureScalarCurrent(Group):
-    __metaclass__ = InstrumentMetaclass
+class MeasureScalarCurrent(Group, with_metaclass(InstrumentMetaclass)):
 
     class dc(GenericCommandClass):
         """Performs a current measurement"""
@@ -252,8 +244,7 @@ class MeasureScalarCurrent(Group):
         full_acces = 'measure.scalar.current.dc'
 
 
-class MeasureScalarVoltage(Group):
-    __metaclass__ = InstrumentMetaclass
+class MeasureScalarVoltage(Group, with_metaclass(InstrumentMetaclass)):
 
     class dc(GenericCommandClass):
         """Performs a voltage measurement"""
@@ -261,8 +252,7 @@ class MeasureScalarVoltage(Group):
         full_acces = 'measure.scalar.voltage.dc'
 
 
-class MeasureScalar(Group):
-    __metaclass__ = InstrumentMetaclass
+class MeasureScalar(Group, with_metaclass(InstrumentMetaclass)):
     current = MeasureScalarCurrent
     voltage = MeasureScalarVoltage
 
@@ -302,13 +292,11 @@ class MeasureScalar(Group):
         full_acces = 'measure.scalar.edensity'
 
 
-class Measure(Group):
-    __metaclass__ = InstrumentMetaclass
+class Measure(Group, with_metaclass(InstrumentMetaclass)):
     scalar = MeasureScalar
 
 
-class SystemError(Group):
-    __metaclass__ = InstrumentMetaclass
+class SystemError(Group, with_metaclass(InstrumentMetaclass)):
 
     class next(GenericGetCommandClass):
         """Returns the latest <error code, “message”>. (SCPI Vol.2 §21.8.8)"""
@@ -316,8 +304,7 @@ class SystemError(Group):
         full_acces = 'system.error.next'
 
 
-class SystemSensor(Group):
-    __metaclass__ = InstrumentMetaclass
+class SystemSensor(Group, with_metaclass(InstrumentMetaclass)):
 
     class idn(GenericGetCommandClass):
         """Query information about the connected sensor.
@@ -328,8 +315,7 @@ class SystemSensor(Group):
         full_acces = 'system.sensor.idn'
 
 
-class SystemBeeper(Group):
-    __metaclass__ = InstrumentMetaclass
+class SystemBeeper(Group, with_metaclass(InstrumentMetaclass)):
 
     class state(GenericGetSetCommandClass):
         """Activate/deactivate the beeper. (SCPI Vol.2 §21.2.3)"""
@@ -343,8 +329,7 @@ class SystemBeeper(Group):
         full_acces = 'system.beeper.immediate'
 
 
-class System(Group):
-    __metaclass__ = InstrumentMetaclass
+class System(Group, with_metaclass(InstrumentMetaclass)):
     error = SystemError
     sensor = SystemSensor
     beeper = SystemBeeper
@@ -375,8 +360,7 @@ class System(Group):
         value = Argument(0, ["<year>,<month>,<day>"])
 
 
-class Initiate(Group):
-    __metaclass__ = InstrumentMetaclass
+class Initiate(Group, with_metaclass(InstrumentMetaclass)):
 
     class immediate(GenericCommandClass):
         """Start measurement"""
@@ -384,8 +368,7 @@ class Initiate(Group):
         full_acces = 'initiate.immediate'
 
 
-class SenseEnergyRange(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseEnergyRange(Group, with_metaclass(InstrumentMetaclass)):
 
     class upper(GenericGetSetCommandClass):
         """Sets the energy range in J"""
@@ -404,8 +387,7 @@ class SenseEnergyRange(Group):
         full_acces = 'sense.energy.range.minimum_upper'
 
 
-class SenseEnergyReference(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseEnergyReference(Group, with_metaclass(InstrumentMetaclass)):
 
     class state(GenericGetSetCommandClass):
         """Switches to delta mode"""
@@ -421,8 +403,7 @@ class SenseEnergyReference(Group):
                              "<numeric_value>J"])
 
 
-class SenseEnergy(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseEnergy(Group, with_metaclass(InstrumentMetaclass)):
     range = SenseEnergyRange
     reference = SenseEnergyReference
 
@@ -442,8 +423,7 @@ class SenseEnergy(Group):
         full_acces = 'sense.energy.minimum_reference'
 
 
-class SensePowerDcReference(Group):
-    __metaclass__ = InstrumentMetaclass
+class SensePowerDcReference(Group, with_metaclass(InstrumentMetaclass)):
 
     class state(GenericGetSetCommandClass):
         """Switches to delta mode"""
@@ -459,8 +439,7 @@ class SensePowerDcReference(Group):
                              "<numeric_value>W"])
 
 
-class SensePowerDcRange(Group):
-    __metaclass__ = InstrumentMetaclass
+class SensePowerDcRange(Group, with_metaclass(InstrumentMetaclass)):
 
     class auto(GenericGetSetCommandClass):
         """Switches the auto-ranging function on and off"""
@@ -485,8 +464,7 @@ class SensePowerDcRange(Group):
         value = Argument(0, ["MINmum", "MAXimum", "<numeric_valuje>W"])
 
 
-class SensePowerDc(Group):
-    __metaclass__ = InstrumentMetaclass
+class SensePowerDc(Group, with_metaclass(InstrumentMetaclass)):
     reference = SensePowerDcReference
     range = SensePowerDcRange
 
@@ -512,13 +490,11 @@ class SensePowerDc(Group):
         value = Argument(0, ["W", "DBM"])
 
 
-class SensePower(Group):
-    __metaclass__ = InstrumentMetaclass
+class SensePower(Group, with_metaclass(InstrumentMetaclass)):
     dc = SensePowerDc
 
 
-class SenseAverage(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseAverage(Group, with_metaclass(InstrumentMetaclass)):
 
     class count(GenericGetSetCommandClass):
         """Sets the averaging rate (1 sample takes approx. 3ms)"""
@@ -527,8 +503,7 @@ class SenseAverage(Group):
         value = Argument(0, ["<value>"])
 
 
-class SenseCurrentDcRange(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCurrentDcRange(Group, with_metaclass(InstrumentMetaclass)):
 
     class auto(GenericGetSetCommandClass):
         """Switches the auto-ranging function on and off"""
@@ -553,8 +528,7 @@ class SenseCurrentDcRange(Group):
         value = Argument(0, ["MINmum", "MAXimum", "<numeric_valuje>A"])
 
 
-class SenseCurrentDcReference(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCurrentDcReference(Group, with_metaclass(InstrumentMetaclass)):
 
     class state(GenericGetSetCommandClass):
         """Switches to delta mode"""
@@ -570,8 +544,7 @@ class SenseCurrentDcReference(Group):
                              "<numeric_value>A"])
 
 
-class SenseCurrentDc(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCurrentDc(Group, with_metaclass(InstrumentMetaclass)):
     range = SenseCurrentDcRange
     reference = SenseCurrentDcReference
 
@@ -591,13 +564,11 @@ class SenseCurrentDc(Group):
         full_acces = 'sense.current.dc.minimum_reference'
 
 
-class SenseCurrent(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCurrent(Group, with_metaclass(InstrumentMetaclass)):
     dc = SenseCurrentDc
 
 
-class SenseFrequencyRange(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseFrequencyRange(Group, with_metaclass(InstrumentMetaclass)):
 
     class upper(GenericGetCommandClass):
         """Queries the frequency range // PM100D only"""
@@ -610,13 +581,11 @@ class SenseFrequencyRange(Group):
         full_acces = 'sense.frequency.range.lower'
 
 
-class SenseFrequency(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseFrequency(Group, with_metaclass(InstrumentMetaclass)):
     range = SenseFrequencyRange
 
 
-class SenseVoltageDcRange(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseVoltageDcRange(Group, with_metaclass(InstrumentMetaclass)):
 
     class auto(GenericGetSetCommandClass):
         """Switches the auto-ranging function on and off"""
@@ -641,8 +610,7 @@ class SenseVoltageDcRange(Group):
         value = Argument(0, ["MINmum", "MAXimum", "<numeric_valuje>V"])
 
 
-class SenseVoltageDc(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseVoltageDc(Group, with_metaclass(InstrumentMetaclass)):
     range = SenseVoltageDcRange
 
     class default_reference(GenericGetCommandClass):
@@ -674,13 +642,11 @@ class SenseVoltageDc(Group):
         full_acces = 'sense.voltage.dc.minimum_reference'
 
 
-class SenseVoltage(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseVoltage(Group, with_metaclass(InstrumentMetaclass)):
     dc = SenseVoltageDc
 
 
-class SenseCorrectionPowerPdiode(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrectionPowerPdiode(Group, with_metaclass(InstrumentMetaclass)):
 
     class maximum_response(GenericGetCommandClass):
         """Queries the photodiode maximum response value"""
@@ -705,13 +671,11 @@ class SenseCorrectionPowerPdiode(Group):
         full_acces = 'sense.correction.power.pdiode.minimum_response'
 
 
-class SenseCorrectionPower(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrectionPower(Group, with_metaclass(InstrumentMetaclass)):
     pdiode = SenseCorrectionPowerPdiode
 
 
-class SenseCorrectionLossInput(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrectionLossInput(Group, with_metaclass(InstrumentMetaclass)):
 
     class default_magnitude(GenericGetCommandClass):
         """Queries the user default attenuation factor"""
@@ -736,13 +700,11 @@ class SenseCorrectionLossInput(Group):
         full_acces = 'sense.correction.loss.input.maximum_magnitude'
 
 
-class SenseCorrectionLoss(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrectionLoss(Group, with_metaclass(InstrumentMetaclass)):
     input = SenseCorrectionLossInput
 
 
-class SenseCorrectionEnergyPyro(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrectionEnergyPyro(Group, with_metaclass(InstrumentMetaclass)):
 
     class maximum_response(GenericGetCommandClass):
         """Queries the pyro-detectro maximum response value"""
@@ -767,13 +729,11 @@ class SenseCorrectionEnergyPyro(Group):
         full_acces = 'sense.correction.energy.pyro.minimum_response'
 
 
-class SenseCorrectionEnergy(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrectionEnergy(Group, with_metaclass(InstrumentMetaclass)):
     pyro = SenseCorrectionEnergyPyro
 
 
-class SenseCorrectionCollectZero(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrectionCollectZero(Group, with_metaclass(InstrumentMetaclass)):
 
     class initiate(GenericCommandClass):
         """Performs zero adjustment routine"""
@@ -796,13 +756,11 @@ class SenseCorrectionCollectZero(Group):
         full_acces = 'sense.correction.collect.zero.magnitude'
 
 
-class SenseCorrectionCollect(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrectionCollect(Group, with_metaclass(InstrumentMetaclass)):
     zero = SenseCorrectionCollectZero
 
 
-class SenseCorrection(Group):
-    __metaclass__ = InstrumentMetaclass
+class SenseCorrection(Group, with_metaclass(InstrumentMetaclass)):
     power = SenseCorrectionPower
     loss = SenseCorrectionLoss
     energy = SenseCorrectionEnergy
@@ -847,8 +805,7 @@ class SenseCorrection(Group):
         value = Argument(0, ["MINimum", "MAXimum", "<numeric_value>nm"])
 
 
-class SensePeakdetector(Group):
-    __metaclass__ = InstrumentMetaclass
+class SensePeakdetector(Group, with_metaclass(InstrumentMetaclass)):
 
     class threshold(GenericGetSetCommandClass):
         """Sets the trigger level in % for the energy mode
@@ -873,8 +830,7 @@ class SensePeakdetector(Group):
         full_acces = 'sense.peakdetector.minimum_threshold'
 
 
-class Sense(Group):
-    __metaclass__ = InstrumentMetaclass
+class Sense(Group, with_metaclass(InstrumentMetaclass)):
     energy = SenseEnergy
     power = SensePower
     average = SenseAverage
@@ -885,8 +841,7 @@ class Sense(Group):
     peakdetector = SensePeakdetector
 
 
-class InputAdapter(Group):
-    __metaclass__ = InstrumentMetaclass
+class InputAdapter(Group, with_metaclass(InstrumentMetaclass)):
 
     class type(GenericSetCommandClass):
         """Sets default sensor adapter type"""
@@ -895,8 +850,7 @@ class InputAdapter(Group):
         value = Argument(0, ["PHOTodiode", "THERmal", "PYRo"])
 
 
-class InputThermopileAccelerator(Group):
-    __metaclass__ = InstrumentMetaclass
+class InputThermopileAccelerator(Group, with_metaclass(InstrumentMetaclass)):
 
     class tau(GenericGetSetCommandClass):
         """Sets thermopile time constant tau(0-63%) in s"""
@@ -927,13 +881,11 @@ class InputThermopileAccelerator(Group):
         full_acces = 'input.thermopile.accelerator.maximum_tau'
 
 
-class InputThermopile(Group):
-    __metaclass__ = InstrumentMetaclass
+class InputThermopile(Group, with_metaclass(InstrumentMetaclass)):
     accelerator = InputThermopileAccelerator
 
 
-class InputPdiodeFilterLpass(Group):
-    __metaclass__ = InstrumentMetaclass
+class InputPdiodeFilterLpass(Group, with_metaclass(InstrumentMetaclass)):
 
     class state(GenericGetSetCommandClass):
         """Sets the bandwidth of the photodiode input stage"""
@@ -942,25 +894,21 @@ class InputPdiodeFilterLpass(Group):
         value = Argument(0, ["OFF", "0", "ON", "1"])
 
 
-class InputPdiodeFilter(Group):
-    __metaclass__ = InstrumentMetaclass
+class InputPdiodeFilter(Group, with_metaclass(InstrumentMetaclass)):
     lpass = InputPdiodeFilterLpass
 
 
-class InputPdiode(Group):
-    __metaclass__ = InstrumentMetaclass
+class InputPdiode(Group, with_metaclass(InstrumentMetaclass)):
     filter = InputPdiodeFilter
 
 
-class Input(Group):
-    __metaclass__ = InstrumentMetaclass
+class Input(Group, with_metaclass(InstrumentMetaclass)):
     adapter = InputAdapter
     thermopile = InputThermopile
     pdiode = InputPdiode
 
 
-class Display(Group):
-    __metaclass__ = InstrumentMetaclass
+class Display(Group, with_metaclass(InstrumentMetaclass)):
 
     class contrast(GenericGetSetCommandClass):
         """Set the display contrast. (SCPI Vol.2 §8.4) // PM100D only"""
@@ -975,8 +923,7 @@ class Display(Group):
         value = Argument(0, ["<value>"])
 
 
-class ThorlabsPM100(Generic, InstrumentCommand):
-    __metaclass__ = InstrumentMetaclass
+class ThorlabsPM100(Generic, InstrumentCommand, with_metaclass(InstrumentMetaclass)):
     status = Status
     configure = Configure
     calibration = Calibration
