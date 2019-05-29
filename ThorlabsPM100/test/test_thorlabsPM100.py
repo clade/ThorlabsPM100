@@ -39,3 +39,7 @@ class TestThorlabsPM100(unittest.TestCase):
     def test_call(self):
         self.power_meter.system.beeper.immediate()
         self.assertTrue(self.inst._record['System:Beeper:IMMediate'])
+
+    def test_some_function(self):
+        self.power_meter.sense.power.dc.unit = 'DBM'
+        self.assertEqual(self.inst._record['Sense:Power:Dc:UNIT'], 'DBM')
