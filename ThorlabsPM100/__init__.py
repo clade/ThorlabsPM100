@@ -63,7 +63,10 @@ Please send bug reports or feedback to `Pierre Cladé`_.
 Vesrion History
 ===============
 
+<<<<<<< HEAD
 * 1.2 : change 'ask' to 'query'
+=======
+>>>>>>> dd65956702d246fdaa5891621ac397436fffea18
 * 1.1.1 and 1.1.2 : small bug corrections
 * 1.1 : support of Python 3 with 2to3
 * 1.0 : initial release

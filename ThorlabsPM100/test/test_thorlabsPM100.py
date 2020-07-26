@@ -13,7 +13,7 @@ class FakeSCPI(object):
 #            print('WRITE', val)
             self._record[val] = True
 
-    def ask(self, val):
+    def query(self, val):
         assert val[-1]=='?'
         out = self._record.get(val[:-1], '')
 #        print('ASK', val,'...', out)

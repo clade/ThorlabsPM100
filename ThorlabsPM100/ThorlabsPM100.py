@@ -23,7 +23,7 @@ class Generic(object):
     def _ask(self, cmd):
         if self._verbose:
             print("Ask command %s ..." % cmd,)
-        out = self._inst.ask(cmd)
+        out = self._inst.query(cmd)
         if self._verbose:
             print("recieve %s" % out)
         return out
