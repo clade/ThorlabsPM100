@@ -17,7 +17,7 @@ class USBTMC(object):
             length = 4000
         return os.read(self.FILE, length)
 
-    def ask(self, command, length=None):
+    def query(self, command, length=None):
         self.write(command)
         return self.read(length=length).decode('ascii')
 
