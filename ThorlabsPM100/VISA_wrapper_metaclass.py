@@ -69,6 +69,24 @@ class TestValueFromType(TestValue):
         return 'of type %s' % self.type.__name__
 
 
+class TestValueWithUnit(TestValue):
+    """ Test if a value is from a given type """
+    def __init__(self, tpe, unit):
+        self.type = tpe
+        self.unit = unit
+
+    def condition(self, value):
+        return isinstance(value, self.type)
+
+    def to_string(self, value):
+        return str(value)+self.unit
+
+    def from_string(self, val):
+        if not val.endswith(self.unit):
+            return val
+        val = val[:-len(self.unit)]
+        return _try_to_convert_to_number(val)
+
 class TestValueFromRE(TestValue):
     """ Test a value using a regular expression """
     def __init__(self, re):
@@ -391,7 +409,12 @@ class Argument(object):
         list_test_value = []
         for elm in self.list_value:
             if isinstance(elm, str) and elm.startswith('<'):
-                list_test_value.append(numbers.Number)
+                assert '>' in elm
+                if elm.endswith('>'):
+                    list_test_value.append(numbers.Number)
+                else:
+                    unit = elm[elm.find('>')+1:]
+                    list_test_value.append(TestValueWithUnit(numbers.Number, unit))
             else:
                 list_test_value.append(elm)
         return list_test_value
@@ -527,58 +550,3 @@ class IndexedGroup(Group):
         return new_cmd
 
 
-if __name__ == "__main__":
-    from six import with_metaclass
-    class Generic(with_metaclass(InstrumentMetaclass)):
-#        __metaclass__ = InstrumentMetaclass
-
-        def __init__(self):
-            print("Initialise dummy instrument")
-
-        def _write(self, s):
-            print(s)
-
-        def _ask(self, s):
-            print(s)
-            if 'test1' in s.lower():
-                return '3'
-            return '45.4, 57.3'
-
-    class ChannelMachinGroup(Group):
-        __metaclass__ = InstrumentMetaclass
-
-        class truc(GenericGetSetCommandClass):
-            """ coucou """
-            cmd = 'CH<X>:MACHIN:TRUC'
-            value = Argument(0, [numbers.Number])
-
-    class ChannelGroup(IndexedGroup):
-        __metaclass__ = InstrumentMetaclass
-        machin = ChannelMachinGroup
-        var = '<X>'
-
-        class testa(GenericGetSetCommandClass):
-            """ coucou """
-            cmd = 'CH<X>:TEST1'
-            value = Argument(0, [TestValueBoundNumber(-1, 1)])
-
-        class testb(GenericGetSetCommandClass):
-            """ coucou """
-            cmd = 'CH<X>:TEST'
-            value = Argument(0, [TestValueBoundNumber(-1, 1)])
-            freq = Argument(1, [numbers.Number])
-
-    class Test(Generic, InstrumentCommand, with_metaclass(InstrumentMetaclass)):
-
-        class coucou_val(GenericGetCommandClass):
-            """ This is a test method """
-            cmd = 'COUCOU:VAL'
-            value = Argument(0, ["PIErre", "MATHilde", numbers.Number],
-                             default='Pierre')
-            autre_valeur = Argument(1, [numbers.Number], default=3.14)
-        channel = ChannelGroup
-
-    scope = Test()
-    print(scope.coucou_val)
-    scope.channel[1].testb = 0.2, 4.5
-    print(scope.channel[2].machin.truc)

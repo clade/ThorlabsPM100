@@ -2,22 +2,7 @@ from __future__ import print_function
 import unittest
 
 from .. import ThorlabsPM100
-
-class FakeSCPI(object):
-    _record = {}
-    def write(self, val):
-        if ' ' in val:
-            cmd, vals = val.split(' ')
-            self._record[cmd] = vals
-        else:
-#            print('WRITE', val)
-            self._record[val] = True
-
-    def query(self, val):
-        assert val[-1]=='?'
-        out = self._record.get(val[:-1], '')
-#        print('ASK', val,'...', out)
-        return out
+from .fake_scpi import FakeSCPI
 
 
 initial_value = {'READ':"1.23"}
@@ -43,3 +28,8 @@ class TestThorlabsPM100(unittest.TestCase):
     def test_some_function(self):
         self.power_meter.sense.power.dc.unit = 'DBM'
         self.assertEqual(self.inst._record['Sense:Power:Dc:UNIT'], 'DBM')
+
+    def test_wavelength(self):
+        self.power_meter.sense.correction.wavelength = 1550
+        self.assertEqual(self.inst._record['Sense:Correction:WAVelength'], '1550nm')
+
