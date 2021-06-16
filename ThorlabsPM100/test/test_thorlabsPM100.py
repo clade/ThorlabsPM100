@@ -5,7 +5,7 @@ from .. import ThorlabsPM100
 from .fake_scpi import FakeSCPI
 
 
-initial_value = {'READ':"1.23"}
+initial_value = {'READ':"1.23", 'Sense:Correction:WAVelength? MINimum':'400', "Sense:Correction:WAVelength? Maximum":'1100'}
 
 class TestThorlabsPM100(unittest.TestCase):
     def setUp(self):
@@ -32,4 +32,14 @@ class TestThorlabsPM100(unittest.TestCase):
     def test_wavelength(self):
         self.power_meter.sense.correction.wavelength = 1550
         self.assertEqual(self.inst._record['Sense:Correction:WAVelength'], '1550nm')
+
+    def test_wavelength(self):
+        old_value = self.power_meter.sense.correction.wavelength
+        self.power_meter.sense.correction.wavelength = 780
+        self.assertEqual(self.power_meter.sense.correction.wavelength, 780)
+
+        with self.assertRaises(Exception) as context:
+            self.power_meter.sense.correction.wavelength = 10
+
+        self.assertIn('Wavelength is', str(context.exception))
 

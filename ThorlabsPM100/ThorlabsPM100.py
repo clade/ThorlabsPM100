@@ -804,6 +804,14 @@ class SenseCorrection(Group, with_metaclass(InstrumentMetaclass)):
         full_acces = 'sense.correction.wavelength'
         value = Argument(0, ["MINimum", "MAXimum", "<numeric_value>nm"])
 
+        @staticmethod
+        def additional_test(instrument, value):
+            mini = instrument.minimum_wavelength
+            maxi=  instrument.maximum_wavelength
+            if not mini<=value<=maxi:
+                raise Exception('Wavelength is {}. It should be between {} and {}'.format(value, mini, maxi))
+
+            
 
 class SensePeakdetector(Group, with_metaclass(InstrumentMetaclass)):
 

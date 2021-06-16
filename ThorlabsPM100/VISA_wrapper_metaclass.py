@@ -223,7 +223,7 @@ def _generic_get_command(cmd_name, out_conversion=None, doc=None):
     return get_val
 
 
-def _generic_set_command(cmd_name, in_test=None, doc=None):
+def _generic_set_command(cmd_name, in_test=None, doc=None, additional_test=None):
     """ Create a method that will set the cmd_name
 
     for example: _generic_set_command('CH1:IMPedance') will create the method
@@ -234,13 +234,19 @@ def _generic_set_command(cmd_name, in_test=None, doc=None):
     """
     if in_test is None:
         def set_val(self, value):
+            if additional_test is not None:
+                additional_test(self, value)
             cmd_nameb = self._get_cmd_name(cmd_name)
             self._write('%s %s' % (cmd_nameb, value))
     else:
         def set_val(self, args):
             if isinstance(args, tuple):
+                if additional_test is not None:
+                    additional_test(self, *args)
                 param = in_test(*args)
             else:
+                if additional_test is not None:
+                    additional_test(self, args)
                 param = in_test(args)
             cmd_nameb = self._get_cmd_name(cmd_name)
             self._write('%s %s' % (cmd_nameb, param))
@@ -374,11 +380,12 @@ class GenericSetCommandClass(GenericCommandClass):
 
 
 class GenericGetSetCommandClass(GenericCommandClass):
+    additional_test=None
     @classmethod
     def to_dict(cls, name):
         get_cmd = _generic_get_command(cls.cmd, cls.out_conversion,
                                        doc=cls.__doc__)
-        set_cmd = _generic_set_command(cls.cmd, cls.in_test, doc=cls.__doc__)
+        set_cmd = _generic_set_command(cls.cmd, cls.in_test, doc=cls.__doc__, additional_test=cls.additional_test)
         return {name: property(get_cmd, set_cmd, doc=cls._get_the_doc()),
                 get_cmd.__name__: get_cmd, set_cmd.__name__: set_cmd}
 
