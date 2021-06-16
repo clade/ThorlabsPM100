@@ -1,5 +1,6 @@
-import unittest
+# Unittest with a PM100A on linux (USBTMC)
 
+import unittest
 
 from ..usbtmc import USBTMC
 from .. import ThorlabsPM100
