@@ -22,10 +22,10 @@ class USBTMC(object):
         return self.read(length=length).decode('ascii')
 
     def ask_for_value(self, command):
-        return eval(self.ask(command).strip())
+        return eval(self.query(command).strip())
 
     def getName(self):
-        return self.ask("*IDN?")
+        return self.query("*IDN?")
 
     def sendReset(self):
         self.write("*RST")
