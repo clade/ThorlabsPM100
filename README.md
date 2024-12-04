@@ -19,13 +19,13 @@ The best way to connect your instrument is with the pyvisa package <https://pyvi
 
 First you need to create your instrument. Using visa:
 
-    import visa
+    import pyvisa as visa
     from ThorlabsPM100 import ThorlabsPM100
     rm = visa.ResourceManager()
     inst = rm.open_resource('USB0::0x0000::0x0000::xxxxxxxxx::INSTR', term_chars='\\n', timeout=1)
     power_meter = ThorlabsPM100(inst=inst)
 
-Or using usbtmc (you nedd to have read and write access to the ‘/dev/usbtmc0’):
+Or using usbtmc (you need to have read and write access to the ‘/dev/usbtmc0’):
 
     from ThorlabsPM100 import ThorlabsPM100, USBTMC
     inst = USBTMC(device="/dev/usbtmc0")
@@ -33,8 +33,8 @@ Or using usbtmc (you nedd to have read and write access to the ‘/dev/usbtmc0�
 
 Commands that set or query a value are Python properties of ThorlabsPM100 class. Other command are methods of ThorlabsPM100 class :
 
-    print power_meter.read # Read-only property
-    print power_meter.sense.average.count # read property
+    print(power_meter.read) # Read-only property
+    print(power_meter.sense.average.count) # read property
     power_meter.sense.average.count = 10 # write property
     power_meter.system.beeper.immediate() # method
 
