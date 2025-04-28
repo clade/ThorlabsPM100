@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 import sys
 
-__version__ = '1.2.2'
+__version__ = '1.2.3'
 
 __long_description__ = u"""\
 Overview
